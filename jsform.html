@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/jsform.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="form">
+      <form>
+        <label for="name">
+          NAME: <br />
+          <input type="name" id="name" />
+        </label>
+        <br />
+        <br />
+        <label for="email">
+          EMAIL: <br />
+          <input type="email" id="email" />
+        </label>
+        <br />
+        <br />
+        <label for="username">
+          <br />
+          USERNAME: <br />
+          <input type="text" id="uname" />
+        </label>
+        <br />
+        <br />
+        <label for="hobby">
+          <br />
+          HOBBIES: <sub>write your hobbies seperated by commas</sub> <br />
+          <input type="text" id="hobby" />
+          <button type="button" id="add" hidden>Add</button>
+        </label>
+        <br />
+        <br />
+        <button type="button" id="button">Submit</button>
+      </form>
+    </div>
+    <div id="tab">
+      <table id="list" class="table">
+        <thead>
+          <tr>
+            <th>S/N</th>
+            <th>firstname</th>
+            <th>email</th>
+            <th>username</th>
+            <th>hobbies</th>
+          </tr>
+        </thead>
+        <tbody id="tr"></tbody>
+      </table>
+    </div>
+  </body>
+</html>
+
+<script>
+  var tee = "i am fatima";
+  // console.log(tee.split(" "));
+  //var login = ["Tsli", "Fatee", "Henshaw", "Emma", "Kayode", "Oj"];
+  // for (var i = 0; i < login.length; i++) {
+  //   alert("Hello " + login[i]);
+  // }
+
+  // for (let m = 0; m < login.length; m++) {
+  //   if (login[m] == "Kayode") {
+  //     var sn = m + 1;
+  //     alert("hey i got you mr copper and your number is " + sn);
+  //   } else {
+  //     alert(login[m]);
+  //   }
+  // }
+
+  var login = [];
+  var hobby = [];
+  var trData = "";
+  document.getElementById("button").onclick = function() {
+    var name = document.getElementById("name").value;
+    var mail = document.getElementById("email").value;
+    var uname = document.getElementById("uname").value;
+
+    var loginData = {
+      firstname: name,
+      email: mail,
+      username: uname,
+      hobby: document.getElementById("hobby").value.split(",")
+    };
+
+    login.push(loginData);
+
+    for (let i = 0; i < login.length; i++) {
+      var sn = i + 1;
+
+      trData +=
+        "<tr><td>" +
+        sn +
+        "</td> <td>" +
+        login[i].firstname +
+        "</td> <td>" +
+        login[i].email +
+        "</td> <td>" +
+        login[i].username +
+        "</td> <td>" +
+        login[i].hobby +
+        "</td> </tr>";
+    }
+    tr.innerHTML = trData;
+    trData = "";
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("uname").value = "";
+    hobby = [];
+  };
+
+  // document.getElementById("add").onclick = function() {
+  //   hobby.push(document.getElementById("hobby").value);
+  //   // hobby();
+  //   document.getElementById("hobby").value = "";
+  //};
+</script>
